@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sign_in_containerd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.fragment.auth.signin.SignInFragment">
+
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Введите ваш номер телефона"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/gl_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="270dp" />
+
+
+    <ImageView
+        android:id="@+id/image_flag"
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:background="@drawable/flag"
+        app:layout_constraintBottom_toTopOf="@id/gl_email"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.github.pinball83.maskededittext.MaskedEditText
+        android:id="@+id/masked_edit_text"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval"
+        android:inputType="number"
+        android:padding="10dp"
+        android:textSize="22sp"
+        app:boxStrokeWidth="0dp"
+        app:layout_constraintBottom_toTopOf="@id/gl_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:mask="+(996) *** ** ** **"
+        app:maskIconColor="@color/black"
+        app:notMaskedSymbol="*"
+        tools:ignore="MissingConstraints" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_sign_"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/black"
+        android:text="Продолжить"
+        app:cornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/gl_email"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:progress="@integer/material_motion_duration_medium_1"
+        android:visibility="gone"
+        app:indicatorColor="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

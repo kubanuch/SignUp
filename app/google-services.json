@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "27012408756",
+    "project_id": "signin-c6060",
+    "storage_bucket": "signin-c6060.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27012408756:android:7e2122f79ad5e74a2d3ee1",
+        "android_client_info": {
+          "package_name": "com.kubanych.signup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "27012408756-9htjhug9ke9h9ib3eigflak72njvrvmq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kubanych.signup",
+            "certificate_hash": "a9506b852e341feb85b51af63ec554ac307e5487"
+          }
+        },
+        {
+          "client_id": "27012408756-3shbn1c88c34md1ub7nnh2lufe8nd3ea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWgP5e7z6KlAtGgj2rk-qtlFu8WgoVFwo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "27012408756-3shbn1c88c34md1ub7nnh2lufe8nd3ea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
