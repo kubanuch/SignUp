@@ -1,5 +1,6 @@
 package com.kubanych.signup.presentation.ui.fragment.auth.signin
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -31,7 +32,6 @@ class SignInFragment :
     override val viewModel: SignInViewModel by viewModels()
     private lateinit var mAuth: FirebaseAuth
     private var mVerificationId: String? = null
-    private val TAG = "PhoneAuthActivity"
 
     override fun initialize() {
         mAuth = Firebase.auth
@@ -39,11 +39,13 @@ class SignInFragment :
 
     override fun setupListeners() {
         binding.btnSign.setOnClickListener {
-            initClickers()
+                initClickers()
+
             findNavController().navigate(
                 SignInFragmentDirections.actionSignInFragmentToDialogFragment(
                     binding.maskedEditText.text.toString(),
-                    true
+                    true,
+                    mVerificationId.toString()
                 )
             )
         }
@@ -95,6 +97,4 @@ class SignInFragment :
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
-
-
 }

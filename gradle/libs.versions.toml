@@ -114,6 +114,7 @@ paging-paging = { module = "androidx.paging:paging-runtime-ktx", version.ref = "
 
 #Firebase
 firebase-platform = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebasePlatform" }
+firebase = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebasePlatform" }
 
 #Koin
 koin-koin = { module = "io.insert-koin:koin-android", version.ref = "koin" }

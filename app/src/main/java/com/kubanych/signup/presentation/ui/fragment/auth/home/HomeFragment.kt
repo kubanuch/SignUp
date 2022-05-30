@@ -1,6 +1,5 @@
 package com.kubanych.signup.presentation.ui.fragment.auth.home
 
-import android.annotation.SuppressLint
 import android.os.CountDownTimer
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -29,41 +28,46 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private lateinit var mVerificationId: String
     private lateinit var countdownTimer: CountDownTimer
     private var timeSeconds = 0L
+    private var second: Int = 111111
 
-
-    @SuppressLint("SetTextI18n")
     override fun setupListeners() {
-        binding.tvNumber.text = "код был отправлен на номер:${args.numberOne}"
-        getBackStackData<Boolean>("key") {
-            if (it) {
-                binding.viewTimer.text = args.number.toString()
-            }else{
-            }
-
-
-
-        }
+        binding.tvNumber.text = "код был отправлен на номер:${args.number}"
         timer()
         binding.tvCode.setOnClickListener {
+            timer()
             binding.viewTimer.isVisible = true
             binding.tvCode.isVisible = false
-            timer()
         }
         binding.btnSignIn.setOnClickListener {
-            findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToDialogFragment2(
-                    "",
-                    false
-                )
-            )
-        }
+            binding.apply {
+                val number: String =
+                    etTextOne.text.toString() + etTextTwo.text.toString() + etTextTree.text.toString() + etTextFoo.text.toString() + etTextFo.text.toString() + etTextFooo.text.toString()
+                if (number == second.toString()) {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+//                    verifyPhoneNumberWithCode(number, mVerificationId)
+                } else {
+                    getBackStackData<Boolean>("next") {
+                        if (it) {
+                            binding.viewTimer.isVisible = true
+                            binding.tvCode.isVisible = false
+                            timer()
+                        }
+                    }
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToDialogFragment2(
+                            "",
+                            false
+                        )
+                    )
+                }
 
+            }
+        }
     }
 
     //    override fun setupListeners() {
 //        binding.btnSignIn.setOnClickListener {
 //            val number: String = binding.etTextOne.text.toString()
-//            verifyPhoneNumberWithCode(number, mVerificationId)
 //        }
 //
 //    }
@@ -116,5 +120,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 }
             }
     }
+
 
 }

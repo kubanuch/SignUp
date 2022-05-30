@@ -35,7 +35,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/oval2"
             android:inputType="phone"
-            android:maxLength="1"
             android:textColor="@color/black"
             android:textSize="30sp"
             app:boxStrokeWidth="0dp" />

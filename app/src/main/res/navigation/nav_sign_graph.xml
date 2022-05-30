@@ -34,10 +34,6 @@
             android:id="@+id/action_homeFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
         <argument
-            android:name="number_one"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
             android:name="number"
             app:argType="string"
             app:nullable="true" />
@@ -49,12 +45,23 @@
         <action
             android:id="@+id/action_homeFragment_to_dialogFragment2"
             app:destination="@id/dialogFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <argument
+            android:name="verificationId"
+            android:defaultValue="0"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.kubanych.signup.presentation.ui.fragment.auth.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_permissionErrorBottomSheet"
+            app:destination="@id/permissionErrorBottomSheet" />
+    </fragment>
     <dialog
         android:id="@+id/dialogFragment"
         android:name="com.kubanych.signup.presentation.ui.fragment.auth.dialog.DialogFragment"
@@ -70,7 +77,20 @@
             android:name="isClicked"
             android:defaultValue="false"
             app:argType="boolean" />
+        <argument
+            android:name="verificationId"
+            android:defaultValue="0"
+            app:argType="string" />
 
 
+    </dialog>
+    <dialog
+        android:id="@+id/permissionErrorBottomSheet"
+        android:name="com.kubanych.signup.presentation.ui.fragment.auth.permission.PermissionErrorBottomSheet"
+        android:label="permission_error_bottom_sheet"
+        tools:layout="@layout/permission_error_bottom_sheet">
+        <argument
+            android:name="title"
+            app:argType="string" />
     </dialog>
 </navigation>

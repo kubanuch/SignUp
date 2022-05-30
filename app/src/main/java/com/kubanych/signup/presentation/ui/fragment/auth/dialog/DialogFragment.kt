@@ -6,7 +6,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,8 +19,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DialogFragment : DialogFragment() {
-    private lateinit var countdownTimer: CountDownTimer
-    private var timeSeconds = 0L
     private lateinit var binding: FragmentDialogBinding
     private val args by navArgs<DialogFragmentArgs>()
 
@@ -46,47 +43,32 @@ class DialogFragment : DialogFragment() {
                 tvNext.text = args.number
                 tvResendCodeIn.isVisible = false
                 tvResendCode.isVisible = false
+                setupButtonsClickListener()
             } else {
                 tvResendCodeIn.text = "Вы неправильно ввели код 3 раза."
                 tvResendCode.text = "Повторите попытку через 3 минуты"
                 applyBtn.text = "Далее"
                 applyButton.isVisible = false
                 tvtText.isVisible = false
-                timer()
+                setupButtonsClick()
             }
-            setupButtonsClickListener()
-
         }
         return builder
     }
 
-    private fun timer() {
-        countdownTimer = object : CountDownTimer(120000, 1000) {
-            override fun onTick(p0: Long) {
-                timeSeconds = p0
-                updateTextUI()
-            }
-
-            override fun onFinish() {
-                countdownTimer.cancel()
-            }
-        }
-        countdownTimer.start()
-    }
-
-    private fun updateTextUI() {
-        val minute = (timeSeconds / 1000) / 60
-        val seconds = (timeSeconds / 1000) % 60
-        if (seconds <= 9) {
-            "Отправить код  заново 0$minute:0$seconds".also { binding.applyButton.text = it }
-        } else {
-            "Отправить код  заново 0$minute:$seconds".also { binding.applyButton.text = it }
+    private fun setupButtonsClick() {
+        binding.applyBtn.setOnClickListener {
+            setBackStackData("next", data = true, doBack = true)
         }
     }
 
     private fun setupButtonsClickListener() {
         binding.applyBtn.setOnClickListener {
-            setBackStackData("next", data = true, doBack = true)
+            findNavController().navigate(
+                DialogFragmentDirections.actionDialogFragmentToHomeFragment(
+                    binding.tvNext.text.toString(), true, args.verificationId
+                )
+            )
         }
 
         binding.applyButton.setOnClickListener {

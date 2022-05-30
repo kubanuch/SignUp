@@ -56,10 +56,12 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
     // Firebase
-    implementation("com.google.firebase:firebase-bom:30.0.2")
-    implementation("com.google.firebase:firebase-auth-ktx:21.0.4")
+    implementation("com.google.firebase:firebase-auth-ktx:21.0.5")
+    // firebaseFirestore
+    implementation("com.google.firebase:firebase-firestore-ktx:24.1.2")
+    implementation (platform("com.google.firebase:firebase-bom:30.1.0"))
 
-
+    implementation ("com.google.firebase:firebase-storage-ktx")
     // UI Components
     implementation(libs.bundles.uiComponents)
 
